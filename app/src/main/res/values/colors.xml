@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="app_bg">#F2F2F2</color>
+    <color name="app_top_bg">#4488ff</color>
+    <color name="reveal_color">#1b000000</color>
+    <color name="background_list_back">#e3e3e3</color>
+    <color name="background_list_front">#ffffff</color>
+    <color name="white">#ffffffff</color>
+    <color name="backcard_color">#FFFCAB59</color>
+    <color name="recharge_color">#FFB77CFD</color>
+    <color name="business_color">#FF5290FD</color>
+    <color name="normal_color">#FF000000</color>
+    <color name="item_click_bg">#F7F7F7</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="main_nav_sel">#4389fe</color>
+    <color name="main_nav_nosel">#000000</color>
+</resources>

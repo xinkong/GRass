@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <include layout="@layout/base_head_view"/>
+
+    <TextView
+        android:id="@+id/main_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:text="登陆" />
+
+    <TextView
+        android:id="@+id/main_upLoadpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:text="上传图片" />
+</LinearLayout>
