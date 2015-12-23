@@ -56,6 +56,7 @@ public class MainActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
+
             case R.id.main_login:
                 doLogin();
                 break;
