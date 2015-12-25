@@ -1,18 +1,16 @@
 package com.grass.grass.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 基类adapter
- * 
- * @author bamboo
- * 
+ * @author: huchao
  * @param <T>
  */
 public abstract class GrassBaseAdapter<T> extends BaseAdapter {

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.grass.grass.R;
 import com.grass.grass.base.BaseActivity;
+import com.grass.grass.ui.login.RegisterActivity;
 import com.grass.grass.utils.LogUtils;
 import com.squareup.okhttp.Request;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -23,7 +24,7 @@ public class MainActivity extends BaseActivity {
 
     private TextView mTvLogin;
     private TextView mTvUpload;
-
+    private TextView mTvToRegister;
 
     @Override
     public int getLayoutResId() {
@@ -50,6 +51,9 @@ public class MainActivity extends BaseActivity {
 
         mTvUpload = (TextView) findViewById(R.id.main_upLoadpic);
         mTvUpload.setOnClickListener(this);
+
+        mTvToRegister = (TextView) findViewById(R.id.main_toRegister);
+        mTvToRegister.setOnClickListener(this);
     }
 
     @Override
@@ -63,33 +67,36 @@ public class MainActivity extends BaseActivity {
             case R.id.main_upLoadpic:
                 doFileUpLoad();
                 break;
+            case R.id.main_toRegister:
+                toActivity(RegisterActivity.class);
+                break;
         }
     }
 
     private void doFileUpLoad() {
         show("执行文件上传");
 
-        PostFormBuilder postFormBu =  OkHttpUtils.post().url(HttpUrlManage.Msg.sendPicMsg);
+        PostFormBuilder postFormBu = OkHttpUtils.post().url(HttpUrlManage.Msg.sendPicMsg);
         List<String> a = new ArrayList<String>();
         a.add("/storage/emulated/0/DCIM/Camera/IMG_20151210_161752.jpg");
         a.add("/storage/emulated/0/DCIM/Camera/IMG_20151210_161747.jpg");
         for (int i = 0; i < a.size(); i++) {
-            postFormBu.addFile("file","name"+i+a.get(i).substring(a.get(i).lastIndexOf("."),a.get(i).length()),new File(a.get(i)));
+            postFormBu.addFile("file", "name" + i + a.get(i).substring(a.get(i).lastIndexOf("."), a.get(i).length()), new File(a.get(i)));
         }
         postFormBu.addParams("msgContent", "哈哈哈哈哈")
-                 .addParams("userId", "1").build()
+                .addParams("userId", "1").build()
                 .execute(new StringCallback() {
 
-            @Override
-            public void onError(Request request, Exception e) {
-                LogUtils.i(e.toString());
-            }
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        LogUtils.i(e.toString());
+                    }
 
-            @Override
-            public void onResponse(String response) {
-                LogUtils.i(response);
-            }
-        });
+                    @Override
+                    public void onResponse(String response) {
+                        LogUtils.i(response);
+                    }
+                });
 
 //        OkHttpUtils.post().url(HttpUrlManage.Msg.sendPicMsg)
 //                .addFile("file", "IMG_20151210_161752.jpg", new File("/storage/emulated/0/DCIM/Camera/IMG_20151210_161752.jpg"))
@@ -113,7 +120,7 @@ public class MainActivity extends BaseActivity {
 
     private void doLogin() {
         show("执行了登陆操作");
-        Map<String,String> params = new HashMap<String,String>();
+        Map<String, String> params = new HashMap<String, String>();
         params.put("userName", "o");
         params.put("pwd", "o");
         sendPost(HttpUrlManage.Login.Login, params).execute(new StringCallback() {

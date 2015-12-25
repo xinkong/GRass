@@ -1,6 +1,7 @@
 package com.grass.grass.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -72,6 +73,18 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
      */
     protected void initHead(LinearLayout mHeadBack, TextView mLeft, TextView mTitle, TextView mRight) {
 
+    }
+
+    public void toActivity(Class<?> toClsActivity) {
+        toActivity(toClsActivity, null);
+    }
+
+    public void toActivity(Class<?> toClsActivity, Bundle bundle) {
+        Intent intent = new Intent(this, toClsActivity);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
     }
 
 
