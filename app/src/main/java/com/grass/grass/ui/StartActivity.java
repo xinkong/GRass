@@ -6,6 +6,7 @@ import android.os.Message;
 
 import com.grass.grass.R;
 import com.grass.grass.base.BaseApplication;
+import com.grass.grass.base.BaseGrassActivity;
 import com.grass.grass.entity.UserInfo;
 import com.grass.grass.ui.login.LoginActivity;
 import com.grass.grass.utils.GsonQuick;
@@ -15,20 +16,18 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StartActivity {
+public class StartActivity extends BaseGrassActivity{
 
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String userId = BaseApplication.getSpfinfo("userId");
-//            if("".equals(userId)){
-//                toActivity(LoginActivity.class);
-//            }else{
-//                toActivity(MainActivity.class);
-//            }
-            toActivity(LoginActivity.class);
-            StartActivity.this.finish();
+            if("".equals(userId)){
+                toActivity(LoginActivity.class);
+            }else{
+                toActivity(MainActivity.class);
+            }
         }
     };
 
