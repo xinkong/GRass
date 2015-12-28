@@ -11,4 +11,6 @@
     <dimen name="head_title_text_size">18dp</dimen>
     <dimen name="head_height">44dp</dimen>
 
+    <dimen name="app_padding_left_rgiht">15dp</dimen>
+
 </resources>

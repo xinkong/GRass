@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.grass.grass.entity.UserInfo;
 import com.grass.grass.utils.LogUtils;
 
 /**
@@ -26,5 +27,17 @@ public class BaseApplication extends Application{
         LogUtils.setDebug(true);
     }
 
+    public static boolean saveUserInfo(UserInfo.User user){
+        edit.putString("userId",user.getUserId()+"");
+        edit.putString("userName",user.getUserName());
+        edit.putString("userPwd",user.getPwd());
+        edit.putString("userSex", user.getSex());
+
+       return edit.commit();
+    }
+
+    public static String getSpfinfo(String key){
+        return sharedPreferences.getString(key,"");
+    }
 
 }

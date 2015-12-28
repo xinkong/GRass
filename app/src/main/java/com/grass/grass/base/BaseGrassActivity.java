@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grass.grass.R;
+import com.grass.grass.utils.AppManager;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.request.RequestCall;
@@ -16,9 +17,14 @@ import com.zhy.http.okhttp.request.RequestCall;
 import java.util.Map;
 
 /**
- *
+ * Created by huchao on 2015/12/28.
  */
-public abstract class BaseActivity extends Activity implements View.OnClickListener {
+public abstract class BaseGrassActivity  extends Activity implements View.OnClickListener {
+
+    /**
+     * Activity管理
+     */
+    private AppManager mAppManager;
 
     /**
      * 顶部返回
@@ -41,8 +47,10 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(getLayoutResId());
+
+        mAppManager = AppManager.getInstance();
+        mAppManager.addActivity(this);
 
         initHeadView();
 
@@ -93,7 +101,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
      * @param msg
      */
     protected void show(String msg){
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -122,6 +130,6 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
                 posetRequset.addParams(key,params.get(key));
             }
         }
-       return posetRequset.build();
+        return posetRequset.build();
     }
 }

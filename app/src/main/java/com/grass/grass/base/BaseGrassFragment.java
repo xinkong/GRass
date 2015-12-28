@@ -17,7 +17,7 @@ import com.grass.grass.R;
 /**
  * Created by huchao on 2015/12/23.
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+public abstract class BaseGrassFragment extends Fragment implements View.OnClickListener {
 
     private LinearLayout ll_headView;
     private TextView tv_left;

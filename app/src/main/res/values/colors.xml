@@ -18,4 +18,7 @@
     <color name="item_bg">#FFFFFF</color>
     <color name="main_nav_sel">#4389fe</color>
     <color name="main_nav_nosel">#000000</color>
+
+    <!--黑色字体颜色-->
+    <color name="text_color">#313131</color>
 </resources>
