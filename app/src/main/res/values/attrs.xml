@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="grass_icon" format="reference" />
+    <attr name="grass_text" format="string" />
+    <attr name="grass_text_size" format="dimension" />
+    <attr name="grass_color" format="color" />
+
+    <declare-styleable name="GrassChangeIconAndText">
+        <attr name="grass_icon" />
+        <attr name="grass_text" />
+        <attr name="grass_text_size" />
+        <attr name="grass_color" />
+
+    </declare-styleable>
+
+</resources>
