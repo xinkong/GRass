@@ -130,7 +130,7 @@ public class GrassChangeIconAndText extends View {
         super.onDraw(canvas);
 
         int alpha = (int) Math.ceil((255 * mAlpha));
-        canvas.drawBitmap(mIcon, null, mIconRect, null);
+//        canvas.drawBitmap(mIcon, null, mIconRect, null);
         drawIcon(canvas,alpha);
 
     }
@@ -143,17 +143,25 @@ public class GrassChangeIconAndText extends View {
 
         mBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
+
         mIconPain = new Paint();
-        mIconPain.setAntiAlias(true);
-        mIconPain.setAlpha(alpha);
-        mIconPain.setDither(true);
+
         mIconPain.setColor(mBgColor);
+        mIconPain.setAntiAlias(true);
+        mIconPain.setDither(true);
+        mIconPain.setAlpha(alpha);
 
 
-        canvas.drawRect(mIconRect, mIconPain);
+//        mIconPain.setAntiAlias(true);
+//        mIconPain.setAlpha(alpha);
+//        mIconPain.setDither(true);
+//        mIconPain.setColor(mBgColor);
+
+
+        mCanvas.drawRect(mIconRect, mIconPain);
         mIconPain.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mIconPain.setAlpha(255);
-        canvas.drawBitmap(mIcon, null, mIconRect, mIconPain);
+        mCanvas.drawBitmap(mIcon, null, mIconRect, mIconPain);
 
     }
 }
