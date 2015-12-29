@@ -22,12 +22,12 @@ public class StartActivity extends BaseGrassActivity{
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            String userId = BaseApplication.getSpfinfo("userId");
-            if("".equals(userId)){
+            if(msg.what == 1){
                 toActivity(LoginActivity.class);
             }else{
                 toActivity(MainActivity.class);
             }
+            StartActivity.this.finish();
         }
     };
 
@@ -40,7 +40,7 @@ public class StartActivity extends BaseGrassActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String userId = BaseApplication.getSpfinfo("userId");
-        if("".equals(userId)){
+        if("".equals(userId) || "0".equals(userId)){
             handler.sendEmptyMessageDelayed(1,2000);
         }else{
             doLogin();
@@ -65,7 +65,7 @@ public class StartActivity extends BaseGrassActivity{
                 if(userInfo.isSuccess()){
                     //保存用户信息
                     BaseApplication.saveUserInfo(userInfo.getData());
-                    handler.sendEmptyMessageDelayed(1, 1500);
+                    handler.sendEmptyMessageDelayed(2, 1500);
                 }else {
                     show(userInfo.getMessage());
                 }

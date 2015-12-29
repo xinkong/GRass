@@ -1,10 +1,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_bg"
     android:orientation="vertical">
 
     <include layout="@layout/base_head_view"/>
 
+    <RelativeLayout
+        android:id="@+id/my_rl_exitLogin"
+       android:paddingLeft="@dimen/app_padding_left_rgiht"
+        android:paddingRight="@dimen/app_padding_left_rgiht"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sel_item_click_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:paddingTop="8dp" >
+
+        <ImageView
+            android:id="@+id/my_iv9"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/my_exit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/my_iv9"
+            android:text="退出登录" />
+
+        <!--      <ImageView
+                 android:layout_width="20dp"
+                 android:layout_height="20dp"
+                 android:layout_alignParentRight="true"
+                 android:layout_centerVertical="true"
+                 android:src="@drawable/monty_enter" /> -->
+    </RelativeLayout>
 
 </LinearLayout>

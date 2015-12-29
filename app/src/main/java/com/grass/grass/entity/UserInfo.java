@@ -22,6 +22,7 @@ public class UserInfo extends BaseEntity{
         private String sex;
         private String userHeadPath;
 
+
         public int getUserId() {
             return userId;
         }

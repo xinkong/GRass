@@ -1,5 +1,6 @@
 package com.grass.grass.ui.find;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,4 +21,10 @@ public class FindFragment extends BaseGrassFragment {
         super.initHeadView(ll_headView, tv_left, tv_title, tv_right);
         tv_title.setText("发现");
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
 }
