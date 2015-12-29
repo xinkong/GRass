@@ -1,7 +1,7 @@
 package com.grass.grass.base;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,10 +43,12 @@ public abstract class BaseGrassFragment extends Fragment implements View.OnClick
         tv_left = (TextView) findViewById(R.id.head_tv_left);
         tv_title = (TextView) findViewById(R.id.head_tv_title);
         tv_right = (TextView) findViewById(R.id.head_tv_right);
-        tv_left.setOnClickListener(this);
     }
 
     protected  void initHeadView(LinearLayout ll_headView, TextView tv_left, TextView tv_title, TextView tv_right){
+        if(tv_left!=null){
+            tv_left .setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -94,8 +96,6 @@ public abstract class BaseGrassFragment extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.head_tv_left){
-            getActivity().finish();
-        }
+
     }
 }

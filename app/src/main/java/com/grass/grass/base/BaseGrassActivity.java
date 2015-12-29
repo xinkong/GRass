@@ -1,8 +1,8 @@
 package com.grass.grass.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * Created by huchao on 2015/12/28.
  */
-public abstract class BaseGrassActivity  extends Activity implements View.OnClickListener {
+public abstract class BaseGrassActivity  extends FragmentActivity implements View.OnClickListener {
 
     /**
      * Activity管理

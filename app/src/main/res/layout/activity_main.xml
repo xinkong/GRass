@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/mian_vp_page"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="#555555"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,33 +23,36 @@
         android:background="#00ffffff"
         android:orientation="horizontal">
 
-       <com.grass.grass.view.GrassChangeIconAndText
+        <com.grass.grass.view.GrassChangeIconAndText
+           android:id="@+id/main_gv_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#00ffffff"
             app:grass_color="#ff45c01a"
-           android:background="#00ffffff"
-            app:grass_icon="@mipmap/ic_menu_emoticons"
+            app:grass_icon="@mipmap/home_main"
             app:grass_text="首页"
-            app:grass_text_size="14sp" />
+            app:grass_text_size="12sp" />
 
         <com.grass.grass.view.GrassChangeIconAndText
+            android:id="@+id/main_gv_find"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:grass_color="#ff45c01a"
             app:grass_icon="@mipmap/home_find"
             app:grass_text="发现"
-            app:grass_text_size="14sp" />
+            app:grass_text_size="12sp" />
 
         <com.grass.grass.view.GrassChangeIconAndText
+            android:id="@+id/main_gv_my"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:grass_color="#ff45c01a"
             app:grass_icon="@mipmap/home_my"
             app:grass_text="我"
-            app:grass_text_size="14sp" />
+            app:grass_text_size="12sp" />
 
     </LinearLayout>
 
