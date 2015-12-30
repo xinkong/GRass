@@ -7,6 +7,10 @@
     <string name="grass_find">发现</string>
     <string name="grass_my">我</string>
 
+    <string name="dir">/heigo</string>
+    <string name="app_dir">/app</string>
+    <string name="cache">/cache</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

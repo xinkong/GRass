@@ -34,7 +34,9 @@
             android:launchMode="singleTask" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.my.MyInfoActivity"></activity>
+        <activity android:name=".ui.my.MyInfoActivity" />
+        <activity android:name=".ui.home.SendMessageActivity" />
+        <activity android:name=".ui.home.selPic.imageloader.ShowPhonePicActivity"></activity>
     </application>
 
 </manifest>

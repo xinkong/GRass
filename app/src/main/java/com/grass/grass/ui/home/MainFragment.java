@@ -28,5 +28,18 @@ public class MainFragment extends BaseGrassFragment {
     protected void initHeadView(LinearLayout ll_headView, TextView tv_left, TextView tv_title, TextView tv_right) {
         super.initHeadView(ll_headView, tv_left, tv_title, tv_right);
         tv_title.setText("首页");
+        tv_right.setVisibility(View.VISIBLE);
+        addRightIcon(R.mipmap.home_add_msg);
+        tv_right.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()){
+            case R.id.head_tv_right:
+                toActivity(getActivity(),SendMessageActivity.class);
+                break;
+        }
     }
 }

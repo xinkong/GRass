@@ -1,10 +1,11 @@
 package com.grass.grass.base;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,10 @@ import com.grass.grass.R;
  */
 public abstract class BaseGrassFragment extends Fragment implements View.OnClickListener {
 
-    private LinearLayout ll_headView;
-    private TextView tv_left;
-    private TextView tv_title;
-    private TextView tv_right;
+    protected LinearLayout ll_headView;
+    protected TextView tv_left;
+    protected TextView tv_title;
+    protected TextView tv_right;
     private Context mContext;
 
     @Override
@@ -68,8 +69,8 @@ public abstract class BaseGrassFragment extends Fragment implements View.OnClick
         startActivity(intent);
     }
 
-    public void show(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    public void show( String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -98,4 +99,14 @@ public abstract class BaseGrassFragment extends Fragment implements View.OnClick
     public void onClick(View v) {
 
     }
+
+    /**
+     * 加载顶部右上角的图片
+     */
+    public void addRightIcon(int id) {
+        Drawable drawable = getResources().getDrawable(id);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        tv_right.setCompoundDrawables(null, null, drawable, null);
+    }
+
 }

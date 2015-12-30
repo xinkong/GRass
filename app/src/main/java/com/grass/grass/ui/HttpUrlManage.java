@@ -20,6 +20,8 @@ public class HttpUrlManage {
     public interface Msg{
         /**发送带图片的消息*/
         String sendPicMsg = BASEURL + "sendMsgHavePic";
+        /**发送无图片消息*/
+        String sendMsgNoPic = BASEURL + "sendMsgNoPic";
     }
 
 }

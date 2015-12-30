@@ -15,6 +15,7 @@ public class BaseApplication extends Application{
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor edit;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,6 +26,12 @@ public class BaseApplication extends Application{
 
         //是否打印log日志
         LogUtils.setDebug(true);
+
+        createTempPath();
+    }
+
+    private void createTempPath() {
+
     }
 
     public static boolean saveUserInfo(UserInfo.User user){
