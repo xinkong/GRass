@@ -1,20 +1,33 @@
 package com.grass.grass.ui.home;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.grass.grass.R;
+import com.grass.grass.adapter.MessageAdapter;
+import com.grass.grass.base.BaseApplication;
 import com.grass.grass.base.BaseGrassFragment;
-import com.grass.grass.ui.home.selPic.utils.ImageLoader;
+import com.grass.grass.entity.MessageInfo;
+import com.grass.grass.ui.HttpUrlManage;
+import com.grass.grass.utils.GsonQuick;
+import com.grass.grass.utils.LogUtils;
+import com.grass.grass.utils.MyStringCallBack;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainFragment extends BaseGrassFragment {
 
-    private ImageView imageView;
+    private ListView mLvAllMeg;
+    private MessageAdapter mMsgAdapter;
+    private SimpleDraweeView mSimple;
 
     @Override
     public View onInflaterView(LayoutInflater inflater) {
@@ -35,9 +48,22 @@ public class MainFragment extends BaseGrassFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        imageView = (ImageView) findViewById(R.id.imageview);
-        //http://101.201.150.217:8888/Grass/msgImage/7d9d5c5c-2ba9-408a-b081-512d66ef40ca.png
-        ImageLoader.getInstance().loadNetImage(getActivity(),"http://101.201.150.217:8888/Grass/msgImage/7d9d5c5c-2ba9-408a-b081-512d66ef40ca.png",imageView);
+        initView();
+
+        getData();
+
+    }
+
+    private void initView() {
+
+        mLvAllMeg = (ListView) findViewById(R.id.msg_lv_allMsg);
+//        mMsgAdapter = new MessageAdapter(getActivity());
+//        mLvAllMeg.setDividerHeight(0);
+//        mLvAllMeg.setAdapter(mMsgAdapter);
+        LogUtils.i("用户ID:" + BaseApplication.getSpfinfo("userId"));
+        mSimple = (SimpleDraweeView) findViewById(R.id.simple_img);
+        mSimple.setImageURI(Uri.parse("http://101.201.150.217:8888/Grass/msgImage/fd89c040-227b-45a5-9046-f6e491a3cab3.png"));
+
     }
 
 
@@ -49,5 +75,20 @@ public class MainFragment extends BaseGrassFragment {
                 toActivity(getActivity(),SendMessageActivity.class);
                 break;
         }
+    }
+
+    public void getData() {
+
+        Map<String,String> params = new HashMap<String,String>();
+        params.put("pageNo","0");
+
+        sendPost(HttpUrlManage.Msg.getAllMsgInfo, params).execute(new MyStringCallBack(getActivity()) {
+            @Override
+            public void onSuccessResponse(String response) {
+                MessageInfo msgInfo = GsonQuick.toObject(response, MessageInfo.class);
+//                mMsgAdapter.setData(msgInfo.getData());
+            }
+        });
+
     }
 }

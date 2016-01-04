@@ -1,9 +1,11 @@
 package com.grass.grass.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.grass.grass.entity.BaseEntity;
+import com.grass.grass.ui.login.LoginActivity;
 import com.squareup.okhttp.Request;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -31,7 +33,11 @@ public abstract class MyStringCallBack extends StringCallback{
         if(baseEntity.isSuccess()){
             onSuccessResponse(response);
         }else{
-            Toast.makeText(mContenxt,baseEntity.getMessage(),Toast.LENGTH_SHORT).show();
+            if(baseEntity.getMessage().equals("请登录")){
+                Toast.makeText(mContenxt,"会话超时,请登录",Toast.LENGTH_SHORT).show();
+                mContenxt.startActivity(new Intent(mContenxt, LoginActivity.class));
+                AppManager.getInstance().finishAllActivity();
+            }
         }
     }
 

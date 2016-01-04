@@ -14,6 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grass.grass.R;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.request.RequestCall;
+
+import java.util.Map;
 
 /**
  * Created by huchao on 2015/12/23.
@@ -98,6 +103,24 @@ public abstract class BaseGrassFragment extends Fragment implements View.OnClick
     @Override
     public void onClick(View v) {
 
+    }
+
+    /**
+     * 发送post请求
+     * @param url
+     * @param params
+     */
+    public RequestCall sendPost(String url,Map<String,String> params){
+
+        PostFormBuilder posetRequset = OkHttpUtils.post();
+        posetRequset.url(url);
+        //迭代Map
+        if(params!=null){
+            for(String key :params.keySet()){
+                posetRequset.addParams(key,params.get(key));
+            }
+        }
+        return posetRequset.build();
     }
 
     /**

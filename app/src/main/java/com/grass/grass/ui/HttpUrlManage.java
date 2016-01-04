@@ -8,7 +8,9 @@ public class HttpUrlManage {
     /**
      * 基础url
      */
-    private static String BASEURL = "http://101.201.150.217:8888/Grass/";
+    private static String BASEURL = "http://101.201.150.217:8888/Grass/";//阿里
+//    private static String BASEURL = "http://192.168.0.100:8080/Grass/";//本地
+
 
     public interface Login {
         /**用户登陆*/
@@ -22,6 +24,9 @@ public class HttpUrlManage {
         String sendPicMsg = BASEURL + "sendMsgHavePic";
         /**发送无图片消息*/
         String sendMsgNoPic = BASEURL + "sendMsgNoPic";
+
+        /**得到所有的消息*/
+        String getAllMsgInfo = BASEURL + "getAllMsgInfo";
     }
 
 }

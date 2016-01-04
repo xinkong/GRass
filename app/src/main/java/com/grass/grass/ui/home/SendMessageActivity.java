@@ -172,20 +172,20 @@ public class SendMessageActivity extends BaseGrassActivity {
 //            postFormBu.addFile("file", "name" + i + mSelPic.get(i).substring(mSelPic.get(i).lastIndexOf("."), mSelPic.get(i).length()), new File(mSelPic.get(i)));
         }
         postFormBu.addParams("msgContent", content+"")
-                .addParams("userId", "1").build()
+                .addParams("userId", BaseApplication.getSpfinfo("userId")).build()
                 .execute(new StringCallback() {
 
                     @Override
                     public void onError(Request request, Exception e) {
-                      handler.sendEmptyMessage(1);
+                        handler.sendEmptyMessage(1);
                     }
 
                     @Override
                     public void onResponse(String response) {
                         Message msg = Message.obtain();
-                        msg.what =2;
+                        msg.what = 2;
                         msg.obj = response;
-                       handler.sendMessage(msg);
+                        handler.sendMessage(msg);
                     }
                 });
 
