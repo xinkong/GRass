@@ -11,7 +11,8 @@
         android:id="@+id/simple_img"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        fresco:placeholderImage="@mipmap/ic_launcher"
+        android:background="#e3e3e3"
+        fresco:roundAsCircle="true"
 
         />
 

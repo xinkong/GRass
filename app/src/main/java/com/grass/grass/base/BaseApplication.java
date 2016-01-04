@@ -3,10 +3,15 @@ package com.grass.grass.base;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.drawable.ProgressBarDrawable;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.grass.grass.R;
 import com.grass.grass.entity.UserInfo;
 import com.grass.grass.utils.AppGlobal;
 import com.grass.grass.utils.LogUtils;
@@ -18,7 +23,7 @@ import java.io.File;
  */
 public class BaseApplication extends Application{
 
-    private Context mContext;
+    private static Context mContext;
 
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor edit;
@@ -43,7 +48,19 @@ public class BaseApplication extends Application{
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(mContext)
                 .setMainDiskCacheConfig(DiskCacheConfig.newBuilder().setBaseDirectoryName("grass").setBaseDirectoryPath(new File(AppGlobal.getCacheRoot(mContext))).build())
                 .build();
-        Fresco.initialize(mContext,config);
+        Fresco.initialize(mContext, config);
+    }
+
+    public static GenericDraweeHierarchy getHierarchy(){
+        Drawable bg = mContext.getResources().getDrawable(R.drawable.tips_bg);
+        GenericDraweeHierarchyBuilder builder =
+                new GenericDraweeHierarchyBuilder(mContext.getResources());
+        GenericDraweeHierarchy hierarchy = builder
+                .setFadeDuration(300)
+                .setPlaceholderImage(bg)
+                .build();
+        hierarchy.setProgressBarImage(new ProgressBarDrawable());
+       return hierarchy;
     }
 
 

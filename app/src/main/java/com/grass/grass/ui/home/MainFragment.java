@@ -61,8 +61,11 @@ public class MainFragment extends BaseGrassFragment {
 //        mLvAllMeg.setDividerHeight(0);
 //        mLvAllMeg.setAdapter(mMsgAdapter);
         LogUtils.i("用户ID:" + BaseApplication.getSpfinfo("userId"));
+
         mSimple = (SimpleDraweeView) findViewById(R.id.simple_img);
-        mSimple.setImageURI(Uri.parse("http://101.201.150.217:8888/Grass/msgImage/fd89c040-227b-45a5-9046-f6e491a3cab3.png"));
+        mSimple.setImageURI(Uri.parse("http://101.201.150.217:8888/Grass/msgImage/d69d4b48-db1b-4420-b6f8-4e87a39eb876.png"));
+
+//        mSimple.setHierarchy(BaseApplication.getHierarchy());
 
     }
 
