@@ -12,5 +12,5 @@
     <dimen name="head_height">44dp</dimen>
 
     <dimen name="app_padding_left_rgiht">15dp</dimen>
-
+    <dimen name="sex_size">4dp</dimen>
 </resources>

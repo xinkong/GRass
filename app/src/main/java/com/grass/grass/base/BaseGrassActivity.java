@@ -100,7 +100,7 @@ public abstract class BaseGrassActivity  extends FragmentActivity implements Vie
      * 界面弹出提示消息
      * @param msg
      */
-    protected void show(String msg){
+    public void show(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 

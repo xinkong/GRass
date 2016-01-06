@@ -25,6 +25,16 @@ public class MessageInfo extends BaseEntity{
         private List<ImageInfo> imgs;
         private List<SimpleCommend> simpleCommends;
         private List<Commend> commends;
+        private boolean isMyZan = false;
+
+
+        public boolean isMyZan() {
+            return isMyZan;
+        }
+
+        public void setIsMyZan(boolean isMyZan) {
+            this.isMyZan = isMyZan;
+        }
 
         public int getMsgId() {
             return msgId;

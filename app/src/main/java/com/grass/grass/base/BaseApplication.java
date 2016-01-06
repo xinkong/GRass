@@ -15,6 +15,12 @@ import com.grass.grass.R;
 import com.grass.grass.entity.UserInfo;
 import com.grass.grass.utils.AppGlobal;
 import com.grass.grass.utils.LogUtils;
+import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import java.io.File;
 
@@ -41,14 +47,48 @@ public class BaseApplication extends Application{
         LogUtils.setDebug(true);
 
         initFresco();
+//        initImageLoad();
 
     }
+
+    private void initImageLoad() {
+//		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
+//				.diskCacheFileNameGenerator(new Md5FileNameGenerator()).diskCacheSize(50 * 1024 * 1024).diskCache(new UnlimitedDiscCache(new File(BitmapHelp.getCacheRoot(this))))
+//				// 50 Mb
+//				.tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs().build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration
+                .Builder(this)
+                .memoryCacheExtraOptions(720, 1280) // maxwidth, max height，即保存的每个缓存文件的最大长宽
+                .threadPoolSize(3)//线程池内加载的数量
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .memoryCacheSize(2 * 1024 * 1024)
+                .discCacheSize(30 * 1024 * 1024)
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                .discCacheFileCount(50) //缓存的文件数量
+                .discCache(new LimitedAgeDiskCache(new File(AppGlobal.getCacheRoot(this)),1*60*60*24*30L))//自定义缓存路径,保存一个月时间
+                .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
+                .imageDownloader(new BaseImageDownloader(this, 5 * 1000, 30 * 1000)) // connectTimeout (5 s), readTimeout (30 s)超时时间
+                .writeDebugLogs() // Remove for releaseapp
+                .build();
+
+        ImageLoader.getInstance().init(config);
+
+    }
+
+    public static DisplayImageOptions getOptions(){
+        DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnFail(R.mipmap.app_default_img).showImageForEmptyUri(R.mipmap.app_default_img)
+                .showImageOnLoading(R.mipmap.app_default_img).cacheOnDisk(true).cacheInMemory(true).build();
+        return options;
+    }
+
 
     private void initFresco() {
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(mContext)
                 .setMainDiskCacheConfig(DiskCacheConfig.newBuilder().setBaseDirectoryName("grass").setBaseDirectoryPath(new File(AppGlobal.getCacheRoot(mContext))).build())
                 .build();
-        Fresco.initialize(mContext, config);
+        Fresco.initialize(mContext);
     }
 
     public static GenericDraweeHierarchy getHierarchy(){

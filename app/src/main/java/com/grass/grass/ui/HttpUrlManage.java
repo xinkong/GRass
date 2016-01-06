@@ -11,6 +11,10 @@ public class HttpUrlManage {
     private static String BASEURL = "http://101.201.150.217:8888/Grass/";//阿里
 //    private static String BASEURL = "http://192.168.0.100:8080/Grass/";//本地
 
+    /**头像地址*/
+    public static String baseHeadPic = "http://101.201.150.217:8888/Grass/userHeadPic/";
+    /**图片地址*/
+    public static String baseImagePic = "http://101.201.150.217:8888/Grass/msgImage/";
 
     public interface Login {
         /**用户登陆*/
@@ -27,6 +31,9 @@ public class HttpUrlManage {
 
         /**得到所有的消息*/
         String getAllMsgInfo = BASEURL + "getAllMsgInfo";
+        /**点赞*/
+        String zan = BASEURL + "zan";
+
     }
 
 }

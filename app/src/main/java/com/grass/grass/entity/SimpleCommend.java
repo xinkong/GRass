@@ -10,6 +10,13 @@ public class SimpleCommend {
     private boolean isZan;
     private boolean isCai;
 
+    public SimpleCommend(){}
+    public SimpleCommend(int userId, boolean isCai, boolean isZan) {
+        this.userId = userId;
+        this.isCai = isCai;
+        this.isZan = isZan;
+    }
+
     public int getId() {
         return id;
     }

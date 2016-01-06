@@ -46,6 +46,7 @@ public class SendMessageActivity extends BaseGrassActivity {
     private ImageView mIvAddPic;
     public static final int requestCode = 1;
     private ArrayList<String> mSelPic = new ArrayList<String>();
+    private ArrayList<String> returnPic = new ArrayList<String>();
     private ArrayList<String> tempImages = new ArrayList<String>();
 
     private LoadingDialog dialog;
@@ -86,14 +87,15 @@ public class SendMessageActivity extends BaseGrassActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == resultCode && data!=null){
-            mSelPic = data.getStringArrayListExtra("selPics");
+            mSelPic.addAll(data.getStringArrayListExtra("selPics"));
+            returnPic = data.getStringArrayListExtra("selPics");
 
             showSelPic();
         }
     }
 
     private void showSelPic() {
-        for(String s : mSelPic){
+        for(String s : returnPic){
             ImageView selPic = new ImageView(this);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.dip2px(SendMessageActivity.this, 100),DensityUtil.dip2px(SendMessageActivity.this,100));
             selPic.setLayoutParams(params);

@@ -1,12 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="18dp"
+    android:layout_marginTop="20dp"
     android:background="#FFFFFF"
-    android:descendantFocusability="blocksDescendants" >
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/app_padding_left_rgiht"
+        android:paddingRight="@dimen/app_padding_left_rgiht"
+        android:paddingTop="10dp">
 
-</RelativeLayout>
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_msg_sd_headPic"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/app_default_head"
+            fresco:roundAsCircle="true" />
+
+        <!--<com.grass.grass.view.CircleImageView-->
+            <!--android:id="@+id/item_msg_iv_headPic"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="36dp" />-->
+
+        <TextView
+            android:id="@+id/item_msg_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/item_msg_sd_headPic"
+            android:maxEms="4"
+            android:singleLine="true"
+            android:text="EDFS DGG"
+            android:textColor="#252525"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/item_msg_tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/item_msg_tv_name"
+            android:text="女"
+            android:layout_marginLeft="10dp"
+            android:textColor="#252525"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="#464545" />
+
+    <RelativeLayout
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/app_padding_left_rgiht"
+        android:paddingRight="@dimen/app_padding_left_rgiht"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_quotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:src="@mipmap/quotes" />
+
+        <TextView
+            android:id="@+id/item_msg_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            android:text="内容"
+            android:layout_toRightOf="@+id/iv_quotes"
+            android:maxLines="3"/>
+
+
+        <com.grass.grass.view.MyNoScrollGridView
+            android:id="@+id/msg_gv_imgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/item_msg_tv_content"
+            android:layout_alignLeft="@+id/item_msg_tv_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipChildren="true"
+            android:gravity="center"
+            android:horizontalSpacing="3dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="3dip"></com.grass.grass.view.MyNoScrollGridView>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:layout_marginTop="8dp"
+        android:background="#464545" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="6dp"
+        android:paddingLeft="@dimen/app_padding_left_rgiht"
+        android:paddingRight="@dimen/app_padding_left_rgiht"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_msg_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#252525"
+            android:text="刚刚"
+            android:textSize="16sp"/>
+
+
+        <RadioButton
+            android:id="@+id/item_msg_rb_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/sel_zan"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/app_bg" />
+
+</LinearLayout>
